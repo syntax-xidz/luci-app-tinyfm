@@ -19,7 +19,7 @@ jobs:
           - sdk_ver: "24.10"
             sdk_url: "https://downloads.openwrt.org/releases/24.10.0/targets/x86/64/openwrt-sdk-24.10.0-x86-64_gcc-13.3.0_musl.Linux-x86_64.tar.zst"
           - sdk_ver: "25.12"
-            sdk_url: "https://downloads.openwrt.org/releases/25.12.0/targets/x86/64/openwrt-sdk-25.12.0-x86-64_gcc-14.2.0_musl.Linux-x86_64.tar.zst"
+            sdk_url: "https://downloads.openwrt.org/releases/25.12.0/targets/x86/64/openwrt-sdk-25.12.0-x86-64_gcc-14.3.0_musl.Linux-x86_64.tar.zst"
 
     steps:
       - name: Checkout repository
@@ -67,3 +67,4 @@ jobs:
           body: |
             Build for OpenWrt ${{ matrix.sdk_ver }}
             Format: ${{ matrix.sdk_ver == '25.12' && 'APK' || 'IPK' }}
+            Toolchain: ${{ matrix.sdk_ver == '25.12' && 'GCC 14.3.0' || 'GCC 13.3.0' }}
